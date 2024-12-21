@@ -1,26 +1,29 @@
-# Project Name : PowerShell Command Encoding Detection and Analysis in Azure Sentinel
+# Project Name: Secure SFTP Server Setup
 
 ## Overview
-This project uses Azure Sentinel to detect encoded PowerShell commands on devices. The query identifies events with encoded PowerShell flags, extracts and decodes base64 strings, and summarizes unique decoded commands. The results trigger incidents, activating a playbook that sends an email with detailed information for further investigation
+This project provides a secure and customizable SFTP server setup using best practices for file transfer. The server is configured to allow SSH key-based authentication, ensuring passwordless logins. It incorporates security features such as user isolation with a chroot environment, automatic IP blocking using fail2ban, and firewall configuration to limit access to only necessary ports and trusted IPs. This setup ensures secure file transfers and protects against unauthorized access.
 
-Example:
-This project helps to create analytic rules in Azure Sentinel to monitor specific activities and generate incidents based on certain queries.
+**Example:**
+This project provides a step-by-step guide for setting up a secure FTP server with advanced security measures.
 
 ---
 
 ## Prerequisites
 Before you begin, ensure you have met the following requirements:
 
-- Azure subscription
-- Azure VM to run Powershell Script
-- Appropriate permissions to create analytic rules and run PlayBooks
+- Ubuntu or Debian-based OS
+- OpenSSH Server installed
+- Fail2ban (optional but recommended for enhanced security)
+- UFW firewall (optional for additional security)
+- Basic knowledge of server administration and SSH
 
 ---
 
 ## Steps to Set Up
 
-### Step 1: Create a New Analytic Rule
-1. Navigate to **Azure Sentinel**.
-2. Choose **Analytics** from the menu options.
-3. Choose **Scheduled** query rule from the menu options.
-4. Configure the rule to generate incident
+### Step 1: Install and Update the System
+1. Update the system and install necessary packages.
+   
+   ```bash
+   sudo apt update && sudo apt upgrade -y
+   sudo apt install openssh-server -y
